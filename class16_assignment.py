@@ -50,67 +50,6 @@ def add_product(db_conn,product_data):
     
     db_conn.commit() 
 
-# def update_product(db_conn,update_data):
-#     mycursor=db_conn.cursor()
-#     update_id=update_data['id']
-#     update_name=update_data['name']
-    
-#     current_datetime=datetime.now()
-#     mycursor.execute(
-#         """
-#         update product set name=%s, updated_at=%s
-#         where id=%s
-#         """, 
-#         (update_name, current_datetime,update_id)
-#     )
-    
-#     db_conn.commit() 
-
-# def delete_product(db_conn, delete_data):
-#     mycursor = db_conn.cursor()
-#     delete_id = delete_data['id']
-#     print(f"Attempting to delete product with ID: {delete_id}")  # Debugging step
-    
-#     mycursor.execute(
-#         """
-#         DELETE FROM product 
-#         WHERE id = %s
-#         """, 
-#         (delete_id,)
-#     )
-    
-#     db_conn.commit()
-#     print(f"Product with ID {delete_id} deleted successfully.")
-
-# def display_categories(db_conn):
-#     mycursor=db_conn.cursor()
-#     mycursor.execute("SELECT * FROM category")
-#     return mycursor.fetchall()
-
-# def display_products(db_conn):   
-
-#     mycursor=db_conn.cursor()
-#     mycursor.execute("SELECT * FROM product")
-#     return mycursor.fetchall()
-
-# def display_combined(db_conn):
-#     mycursor=db_conn.cursor()
-#     mycursor.execute("""
-#         SELECT 
-#             product.id AS product_id,
-#             product.name AS product_name,
-#             category.name AS category_name,
-#             product.created_at AS product_created_at
-#         FROM 
-#             product
-#         INNER JOIN 
-#             category
-#         ON 
-#             product.cat_id = category.id;
-#         """
-#     )
-#     return mycursor.fetchall()
-
 
 def main():
     while True:
@@ -145,25 +84,7 @@ def main():
           product_data['stock_quantity']=input("enter product stock quantity:\n")
           product_data['category_id']=input("enter category id:\n")
           add_product(db_conn,product_data)
-        # elif choice == '3':
-        #      update_data={}
-        #      update_data['id'] = input("enter product id:\n")
-        #      update_data['name'] = input("enter product name:\n")
-          
-        #      update_product(db_conn,update_data)
-        # elif choice == '4':
-        #     delete_data={}
-        #     delete_data['id']=int(input("enter product id:\n"))
-        #     delete_product(db_conn, delete_data)
-        # elif choice == '5':
-        #      get_category=display_categories(db_conn)
-        #      print(json.dumps(get_category,default=str,indent=4))
-        # elif choice == '6':
-        #     get_product=display_products(db_conn)
-        #     print(json.dumps(get_product,default=str,indent=4))
-        # elif choice == '7':
-        #     combined_result=display_combined(db_conn)
-        #     print(json.dumps(combined_result,default=str,indent=4))
+        
 
         elif choice == '0':
             break
