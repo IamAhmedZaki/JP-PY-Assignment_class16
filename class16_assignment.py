@@ -3,7 +3,7 @@ from datetime import datetime
 import json
 
 def mysqlconnect():
-    # To connect MySQL database
+    
     conn = pymysql.connect(
         host='localhost',
         port=3306,
